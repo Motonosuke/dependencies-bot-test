@@ -1,4 +1,4 @@
-name: Check all lint
+name: All lint
 on:
   pull_request:
     branches:
@@ -15,6 +15,18 @@ jobs:
         with:
           version: 8
       - name: Install packages
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
+      - name: Typecheck
+        run: pnpm run typecheck
       - name: Prettier
-        run: pnpm run lint:all
+        run: pnpm run lint:prettier
+      - name: Eslint
+        run: pnpm run lint:eslint
+      - name: Secretlint
+        run: pnpm run lint:secretlint
+      - name: Ls lint
+        run: pnpm run lint:ls-lint
+      - name: Markup lint
+        run: pnpm run lint:markup-lint
+      - name: Ts prune
+        run: pnpm run lint:ts-prune
