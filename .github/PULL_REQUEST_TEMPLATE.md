@@ -1,6 +1,10 @@
 ## 確認事項
 
-- [ ]  マージ先が正しい
+- [ ] マージ先が正しい
+
+## Issue URL
+
+https://github.com/hoge/issues/
 
 ## 目的
 
