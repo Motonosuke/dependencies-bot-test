@@ -16,7 +16,7 @@ jobs:
 
     - name: Update pull_request_template.md
       run: |
-        BRANCH_NAME=${ github.head_ref}
+        BRANCH_NAME=${ github.head_ref }
         ISSUE_NUMBER=$(echo $BRANCH_NAME | grep -oP 'HOGE-\d+')
         if [[ $ISSUE_NUMBER ]]; then
           sed -i "s#https://github.com/hoge/issues/.*#https://github.com/hoge/issues/$ISSUE_NUMBER#g" .github/pull_request_template.md
