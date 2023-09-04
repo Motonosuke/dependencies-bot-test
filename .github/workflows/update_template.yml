@@ -1,6 +1,11 @@
 name: Update PR Template
 
 on:
+  push:
+    branches:
+      - feature/*
+      - develop
+      - main
   pull_request:
     branches:
       - feature/*
