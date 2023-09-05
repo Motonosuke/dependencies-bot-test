@@ -19,6 +19,7 @@ jobs:
       run: |
         branch_name=${GITHUB_REF##*/}
         issue_number=$(echo $branch_name | grep -o -E '[0-9]+')
+        echo "Issue Number: $issue_number"
         if [[ $issue_number ]]; then
           sed -i "s|https://github.com/Hoge/issues/|https://github.com/Hoge/issues/$issue_number|" ./github/PULL_REQUEST_TEMPLATE.md
           git config --global user.email "action@github.com"
