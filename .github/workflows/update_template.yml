@@ -3,6 +3,7 @@ name: Update PR Template
 on:
   push:
     branches:
+      - HOGE-*
       - feature/*
       - develop
       - main
