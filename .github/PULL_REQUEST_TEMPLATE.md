@@ -4,7 +4,7 @@
 
 ## Issue URL
 
-https://github.com/Hoge/issues/
+https://github.com/Motonosuke/dependencies-bot-test/issues/
 
 ## 目的
 

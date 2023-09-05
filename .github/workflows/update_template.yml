@@ -21,7 +21,7 @@ jobs:
         issue_number=$(echo $branch_name | grep -o -E '[0-9]+')
         echo "Issue Number: $issue_number"
         if [[ $issue_number ]]; then
-          sed -i "s|https://github.com/Hoge/issues/|https://github.com/Hoge/issues/$issue_number|" ./github/PULL_REQUEST_TEMPLATE.md
+          sed -i "s|https://github.com/Motonosuke/dependencies-bot-test/issues/|https://github.com/Motonosuke/dependencies-bot-test/issues/$issue_number/|" ./github/PULL_REQUEST_TEMPLATE.md
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git commit -am "Update PR template with issue number"
