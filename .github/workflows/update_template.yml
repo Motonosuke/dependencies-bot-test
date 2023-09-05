@@ -1,8 +1,9 @@
 name: Update PR Template
 
 on:
-  pull_request:
+  push:
     branches:
+      - HOGE-*
       - feature/*
       - develop
       - main
@@ -14,15 +15,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Update pull_request_template.md
+    - name: Update template with issue number
       run: |
-        BRANCH_NAME=${GITHUB_REF#refs/heads/}
-        ISSUE_NUMBER=$(echo $BRANCH_NAME | grep -oP 'HOGE-\d+')
-        if [[ $ISSUE_NUMBER ]]; then
-          sed -i "s#https://github.com/hoge/issues/.*#https://github.com/hoge/issues/$ISSUE_NUMBER#g" .github/pull_request_template.md
-          git config user.name 'GitHub Actions'
-          git config user.email 'github-actions@users.noreply.github.com'
-          git add .github/pull_request_template.md
-          git commit -m "Update pull_request_template.md with dynamic issue URL"
+        branch_name=${GITHUB_REF##*/}
+        issue_number=$(echo $branch_name | grep -o -E '[0-9]+')
+        echo "Issue Number: $issue_number"
+        if [[ $issue_number ]]; then
+          sed "s|https://github.com/Motonosuke/dependencies-bot-test/issues/|https://github.com/Motonosuke/dependencies-bot-test/issues/$issue_number/|" ./github/PULL_REQUEST_TEMPLATE.md > ./github/temp.md && mv ./github/temp.md ./github/PULL_REQUEST_TEMPLATE.md
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git commit -am "Update PR template with issue number"
           git push
         fi
