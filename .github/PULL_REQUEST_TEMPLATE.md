@@ -4,7 +4,7 @@
 
 ## Issue URL
 
-https://github.com/hoge/issues/
+https://github.com/Hoge/issues/
 
 ## 目的
 
